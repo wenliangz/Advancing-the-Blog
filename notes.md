@@ -27,18 +27,24 @@ what if the user doesn't know the markdown syntax for writing?
     - add a link directly in the Markdown Content
     
 # 3. Responsive image inside the post Markdown 
-if the size of the image is too big,we need to dynamic update the image inside the post Markdown
+if the size of the image is too big,we need to dynamic update the image within the post so that it can fit in a certain size, (responsive like bootstrap image)
 - add a jQuery function/method(process) that convert all the content markdown images and add the class of image responsive, which is based on bootstrap
-- we can not use truncatedchar and linebreaks filter on the content in order for markdown/ responsive image to work
+- we can NOT use truncatedchars and linebreaks filter on the content in order for markdown/ responsive image to work
 
 # =========== Rendering Markdown using Dejango ============
 
-# 4. django-markdown-deux (github)
+# 4. django-markdown-deux (github) for rendering markdown
 - pip install django-markdown-deux
 - install markdown-deux app in django settings
 - define a custome method, get_markdown, within model and return markdown content 
 -  within the tempalte, we use {{obj.get_markdown}}
 - put the template tag filter, safe, in the template, in order for the image content to show up. OR in the model itself, import django mark_safe function and return safe content
+- however, the image is still not responsive. We still have to implement javascript to make the image response. we need to define a div class just for making responsive image.
 
-- however, the image is still not responsive. We still have to implement javascript to make the image response. Define a new div class just for making responsive image.
+# 5. trucate markdown post and django template tags adn filters
+- truncate the post will remove the characters which may also remove images in the post
+- we can use tempalte filter, called truncatechars_html(or truncateword_html), which is aware html tags.
+- use django logic instead of filter if you can 
+
+# 6. 
 
