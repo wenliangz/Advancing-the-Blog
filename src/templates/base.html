@@ -51,7 +51,37 @@ $(document).ready(function(){
    $(".post-detail-item img").each(function(){
        $(this).addClass("img-responsive");
    })
+    // preview-title
+   var titleItem = $("#id_title");
+    $("#preview-title").text(titleItem.val())
+    // preivew-content
+    var contentInput = $("#id_content");
+    $("#preview-content").html(marked(contentInput.val()))
+    // define a function to autoupdate the content dynamically
+    function setContent(value){
+        var markedContent = marked(value)
+        $("#preview-content").html(markedContent)
+        $("#preview-content img").each(function(){
+            $(this).addClass("img-responsive")
+        })
+    }
+    setContent(contentInput.val())
+    contentInput.keyup(function(){
+        var newContent = $(this).val()
+        setContent(newContent)
+    })
   })
+    // do the same to the title
+    var titleInput = $("#id_title");
+    function setTitle(value){
+      $("#preview-title").text(value)
+    }
+    setTitle(titleInput.val())
+    titleInput.keyup(function(){
+        var newContent = $(this).val()
+        setTitle(newContent)
+
+    })
 </script>
 
 

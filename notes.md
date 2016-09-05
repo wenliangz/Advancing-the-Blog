@@ -46,5 +46,9 @@ if the size of the image is too big,we need to dynamic update the image within t
 - we can use tempalte filter, called truncatechars_html(or truncateword_html), which is aware html tags.
 - use django logic instead of filter if you can 
 
-# 6. 
+# 6. Dynamic Preview of the full Form Data
+we are going to do it using jQuery
+- To close the default preview by the PagedownWidget, go to Form.py and add paras:show_preview=False
+- in post_form.html, we need to define  div with a some classes that jQuery can monitor this div targets in the form and bring it to preview.
+- now , go to base.html, add/modify the javascript to enable preview function, and make it dynamically
 
