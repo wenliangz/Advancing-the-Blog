@@ -52,7 +52,7 @@ we are going to do it using jQuery
 - in post_form.html, we need to define  div with a some classes that jQuery can monitor this div targets in the form and bring it to preview.
 - now , go to base.html, add/modify the javascript to enable preview function, and make it dynamically
 
-# ========== make form look better  =================
+# ========== make FORM look better  =================
 
 # 7. crispy form
 - install crispy form into virtual env: pip install django-crispy-forms
@@ -64,3 +64,20 @@ we are going to do it using jQuery
         - at the top add: {% load crispy_forms_tags}
         -  render form use {{form|crispy}}
 - modify to make the wiget not indented.Inspect the class and change base.css
+
+# 8. make our search bar look better by using Bootstrap input groups components
+- inside the search form tag, define a input group div class: input-group and input class
+- use font awesome icon for the search button text, make sure that font awesome cdn is installed to render it
+
+
+# =========== Make our Comments look better ============
+# 9. Create our own comments app instead of using facebook social plugin
+- Comments should be a separate app, so that it can be used throughout the site
+    - create comments app: ptyhon manage.py startapp comments
+    - in the model, for testing, make user and post two foreign keys
+- Use contentType and Generic Foreign Keys
+    - the ideas is that we need to relate comments either to posts(comments on posts), or to other comments(comments on comments).The solution is to use contenttype 
+        - import django GenericForeignKey and ContentType
+        - create genericForeignKey for the comment model
+    - Add comments into the post detail view by contenttype genericForeignKey.  
+
