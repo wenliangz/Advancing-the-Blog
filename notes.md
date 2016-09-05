@@ -52,3 +52,15 @@ we are going to do it using jQuery
 - in post_form.html, we need to define  div with a some classes that jQuery can monitor this div targets in the form and bring it to preview.
 - now , go to base.html, add/modify the javascript to enable preview function, and make it dynamically
 
+# ========== make form look better  =================
+
+# 7. crispy form
+- install crispy form into virtual env: pip install django-crispy-forms
+- in django settings
+    - add crispy-form as app 
+    - add CRISPY_TEMPLATE_PACK = 'bootstrap3 '
+- Now we can use crispy-form tags, which specifically make our form look better
+    - in our template, post_form.html, 
+        - at the top add: {% load crispy_forms_tags}
+        -  render form use {{form|crispy}}
+- modify to make the wiget not indented.Inspect the class and change base.css
