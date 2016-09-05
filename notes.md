@@ -1,3 +1,5 @@
+# =========== Rendering Markdown using Javascript============
+
 # 1. Render HTML and Markdown
 - in post detail.html ,add a filter safe to instance.content(instance.content|safe), this changes the way how things are rendered. e.g. add <h1>Hi, there </h1>
     - safe works by allowing us rendering html, however, it is not user friendly, taking too long to write post using html.
@@ -7,7 +9,7 @@
     - add a new div class, content-markdown, for the content need to be marked down in the post detail.html adn list.html. this class basically mark this content meaning that we are going to mark down this content at some point
     - write and add a new javascript in the base.html to implement our simple jQuery function
  
- # 2. Implementation Django Pagedown 
+# 2. Implementation Django Pagedown for rendering markdown eiditing widget
 what if the user doesn't know the markdown syntax for writing?  
 - Install Pagedown editor
     - install django-pagedown library (github)
@@ -23,3 +25,20 @@ what if the user doesn't know the markdown syntax for writing?
  - implementing widget for selecting date for the date field: 
 - Image in the Markdown Content
     - add a link directly in the Markdown Content
+    
+# 3. Responsive image inside the post Markdown 
+if the size of the image is too big,we need to dynamic update the image inside the post Markdown
+- add a jQuery function/method(process) that convert all the content markdown images and add the class of image responsive, which is based on bootstrap
+- we can not use truncatedchar and linebreaks filter on the content in order for markdown/ responsive image to work
+
+# =========== Rendering Markdown using Dejango ============
+
+# 4. django-markdown-deux (github)
+- pip install django-markdown-deux
+- install markdown-deux app in django settings
+- define a custome method, get_markdown, within model and return markdown content 
+-  within the tempalte, we use {{obj.get_markdown}}
+- put the template tag filter, safe, in the template, in order for the image content to show up. OR in the model itself, import django mark_safe function and return safe content
+
+- however, the image is still not responsive. We still have to implement javascript to make the image response. Define a new div class just for making responsive image.
+
