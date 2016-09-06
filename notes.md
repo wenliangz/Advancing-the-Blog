@@ -70,7 +70,9 @@ we are going to do it using jQuery
 - use font awesome icon for the search button text, make sure that font awesome cdn is installed to render it
 
 # =========== Create our own comments app============
+
 # ------------------- Retreive (List/Detail View) ----------------------
+
 # 9. Create our own comments app instead of using facebook social plugin
 - Comments should be a separate app, so that it can be used throughout the site
     - create comments app: ptyhon manage.py startapp comments
@@ -97,3 +99,5 @@ we are going to do it using jQuery
 # ------------------- Create View ----------------------
 
 # 12. Create comments
+
+
