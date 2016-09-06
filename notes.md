@@ -69,15 +69,26 @@ we are going to do it using jQuery
 - inside the search form tag, define a input group div class: input-group and input class
 - use font awesome icon for the search button text, make sure that font awesome cdn is installed to render it
 
-
-# =========== Make our Comments look better ============
+# =========== Create our own comments app============
 # 9. Create our own comments app instead of using facebook social plugin
 - Comments should be a separate app, so that it can be used throughout the site
     - create comments app: ptyhon manage.py startapp comments
     - in the model, for testing, make user and post two foreign keys
-- Use contentType and Generic Foreign Keys
-    - the ideas is that we need to relate comments either to posts(comments on posts), or to other comments(comments on comments).The solution is to use contenttype 
-        - import django GenericForeignKey and ContentType
-        - create genericForeignKey for the comment model
-    - Add comments into the post detail view by contenttype genericForeignKey.  
+    
+# 10. Use contentType and Generic Foreign Keys
+- the ideas is that we need to relate comments either to posts(comments on posts), or to other comments(comments on comments).The solution is to use contenttype 
+    - import django GenericForeignKey and ContentType
+    - create genericForeignKey for the comment model
+- grap comments to the view by using filter on the contenttype view(not very dynamic)
+    - content_type = ContentType.objects.get_for_model(Post)  # get the Post contenttype
+    - obj_id = instance.id
+    - comments = Comment.objects.filter(content_type=content_type,object_id=obj_id)
 
+# 11. How to grap contents from contenttype using generic foreign keys
+- Build a custom model manager to make the way of getting content from contenttype more dynamic
+    - in comments model, define custom model manager, CommentManager with a filter_by_instance method
+    - in the view, we can just use: Comment.objects.filter_by_instance(instance), allowing us to get comments from any instance
+- Using property decorator in the post model, so that we can use it in the view function by dot notation
+    - import comment model in the post model,
+    - add a property function, comments
+- using Bootstrap blockquote to change block format to  make comments look better
