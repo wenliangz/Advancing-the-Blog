@@ -30,3 +30,9 @@ class Comment(models.Model):
 
     def __str__(self):
         return str(self.user.username)
+
+    # class Meta:
+    #         permissions = (
+    #             ('can_view', 'Can View'),
+    #             ('can_modify', 'Can Modify'),
+    #         )

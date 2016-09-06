@@ -12,7 +12,7 @@
 # 2. Implementation Django Pagedown for rendering markdown eiditing widget
 what if the user doesn't know the markdown syntax for writing?  
 - Install Pagedown editor
-    - install django-pagedown library (github)
+    - install django-pagedown library (github): pip install django-pagedown
     - add pagedown into installed apps
     - collect the static files
 - how to sue:
@@ -99,5 +99,17 @@ we are going to do it using jQuery
 # ------------------- Create View ----------------------
 
 # 12. Create comments
-
-
+- Add "creating comments" part to the post detail view.
+    - In the post model.py, add another property to get a particular contenttype for the model itself, so we can reference it whenever we need. 
+    - Create a form.py to render on the post_detail view.
+        - contenttype and object_id are hidden input
+        - content for inputting comment
+    - Add form to the post_detail function in view.py
+        - bring comment_form to the detail view and form instance to the context
+        - validate form, if valid, do something(print for testing). Eventually, we want to create a comment form inside the form valid method)
+        - define initial data to the comment form that are related to the fields, and set the initial data to the form
+    - Add comments form to render in the post_detail.html
+    - create a comment form under the form.is_valid() method inside the view
+        - use django get_or_create() method, returns a tuple of (object,boolean) 
+        
+        
