@@ -62,6 +62,11 @@ Linkedin
               {{ comment.content}}
             <blockquote>
             <small> via {{ comment.user }} on {{ comment.timestamp | timesince }} ago </small>
+            <form method="POST" action="."> {% csrf_token %}
+                {{ comment_form |crispy }}
+                <input type = 'hidden' value = 'parent_id' value="'{{ comment.id }}"/>
+                <input type = 'submit' value = 'Reply' class = 'btn btn default'/>
+            </form>
             </blockquote>
                 <hr/>
         </div>

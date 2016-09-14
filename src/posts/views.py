@@ -65,8 +65,7 @@ def post_detail(request, slug=None):
             object_id =obj_id,
             content = content_data
         )
-        if created:
-            print('hi,it work!')
+        return HttpResponseRedirect(new_comment.content_object.get_absolute_url())
 
     comments = instance.comments
     # comments = Comment.objects.filter_by_instance(instance)

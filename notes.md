@@ -112,4 +112,7 @@ we are going to do it using jQuery
     - create a comment form under the form.is_valid() method inside the view
         - use django get_or_create() method, returns a tuple of (object,boolean) 
         
-        
+# 13. Reply to comments (comments on comments)
+  - add a foreign key for "self" in the comment model
+  - add children and is_parent instant methods
+  
